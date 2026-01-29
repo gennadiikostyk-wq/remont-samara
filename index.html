@@ -987,15 +987,54 @@ index.html<!DOCTYPE html>
             e.target.value = '+7' + (x[2] ? ' (' + x[2] : '') + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
         });
 
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+       document.getElementById('applicationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const name = formData.get('name');
+    const phone = formData.get('phone');
+    const type = formData.get('type');
+    const message = formData.get('message');
+    
+    const text = `🔔 Новая заявка с сайта!
+    
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+🏠 Тип ремонта: ${type}
+💬 Сообщение: ${message || 'Не указано'}
+    
+⏰ ${new Date().toLocaleString('ru-RU')}`;
+    
+    const BOT_TOKEN = '8303541223:AAFrgqYCVkcqFvE1M3_GwwVQ2U0DjoRj4X4';
+    const CHAT_ID = '1988346254';
+    
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text,
+            parse_mode: 'HTML'
+        })
+    })
+    .then(response => {
+        if(response.ok) {
             const toast = document.getElementById('toast');
             toast.classList.add('show');
             this.reset();
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 5000);
-        });
+        } else {
+            alert('Ошибка отправки, позвоните 8 (996) 735-27-60');
+        }
+    })
+    .catch(error => {
+        alert('Ошибка отправки, позвоните 8 (996) 735-27-60');
+    });
+});
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1010,3 +1049,6 @@ index.html<!DOCTYPE html>
 </body>
 
 </html>
+
+
+Добавлена отправка заявок в Telegram
