@@ -1,204 +1,57 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ремонт квартир эконом класса в Самаре | Частный мастер</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        
-        header { 
-            background: linear-gradient(135deg, #2c3e50, #34495e); 
-            color: white; padding: 40px 0; text-align: center; 
-        }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        header p { font-size: 1.2em; opacity: 0.9; margin-top: 10px; }
-        
-        .gallery-section { padding: 40px 0; }
-        .gallery-filters { text-align: center; margin-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-        .filter-btn { 
-            background: white; border: 2px solid #2c3e50; color: #2c3e50; 
-            padding: 12px 24px; border-radius: 25px; cursor: pointer; 
-            font-size: 16px; transition: all 0.3s; font-weight: 500; 
-        }
-        .filter-btn:hover, .filter-btn.active { background: #2c3e50; color: white; transform: translateY(-2px); }
-        
-        .gallery-grid { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-            gap: 25px; padding: 20px 0; 
-        }
-        .gallery-item { 
-            position: relative; overflow: hidden; border-radius: 12px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); background: white; 
-            cursor: pointer; transition: all 0.3s; height: 300px; 
-        }
-        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .gallery-overlay { 
-            position: absolute; bottom: 0; left: 0; right: 0; 
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); 
-            color: white; padding: 30px 20px 20px; 
-            transform: translateY(100%); transition: transform 0.3s; 
-        }
-        .gallery-item:hover .gallery-overlay { transform: translateY(0); }
-        .gallery-overlay h4 { margin-bottom: 5px; font-size: 1.3em; }
-        .gallery-overlay p { font-size: 0.95em; opacity: 0.9; }
-        
-        .modal { 
-            display: none; position: fixed; top: 0; left: 0; 
-            width: 100%; height: 100%; background: rgba(0,0,0,0.95); 
-            z-index: 1000; justify-content: center; align-items: center; 
-        }
-        .modal-content { 
-            max-width: 90%; max-height: 90%; position: relative; 
-            border-radius: 8px; overflow: hidden; 
-        }
-        .modal img { width: 100%; height: auto; max-height: 85vh; object-fit: contain; }
-        .close { 
-            position: absolute; top: -50px; right: 0; 
-            color: white; font-size: 40px; cursor: pointer; 
-            width: 40px; height: 40px; text-align: center; 
-        }
-        .close:hover { color: #e74c3c; }
-        
-        footer { background: #2c3e50; color: white; text-align: center; padding: 30px; margin-top: 50px; }
-        .phone { color: #e74c3c; font-size: 1.8em; text-decoration: none; font-weight: bold; display: inline-block; margin: 10px 0; }
-        .phone:hover { color: #c0392b; }
-    </style>
-</head>
-<body>
+<div class="gallery-grid" id="galleryGrid">
 
-<header>
-    <div class="container">
-        <h1>Ремонт квартир в Самаре</h1>
-        <p>Эконом класс | Частный мастер | Без посредников</p>
-        <p><a href="tel:+79996735260" class="phone">+7 (999) 673-52-60</a></p>
-    </div>
-</header>
-
-<section class="gallery-section">
-    <div class="container">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 2em; margin-bottom: 10px;">Мои работы</h2>
-            <p style="color: #666; font-size: 1.1em;">Реальные фото ремонта квартир в Самаре</p>
-        </div>
-        
-        <div class="gallery-filters">
-            <button class="filter-btn active" onclick="filterGallery('all', this)">Все работы</button>
-            <button class="filter-btn" onclick="filterGallery('cosmetic', this)">Косметический</button>
-            <button class="filter-btn" onclick="filterGallery('capital', this)">Капитальный</button>
-            <button class="filter-btn" onclick="filterGallery('sanitary', this)">Сантехника</button>
-            <button class="filter-btn" onclick="filterGallery('electric', this)">Электрика</button>
-        </div>
-
-        <div class="gallery-grid" id="galleryGrid">
-            
-            <div class="gallery-item" data-category="cosmetic" onclick="openModal(this)">
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Косметический ремонт">
-                <div class="gallery-overlay">
-                    <h4>Косметический ремонт</h4>
-                    <p>Обои, покраска, ламинат в гостиной</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="capital" onclick="openModal(this)">
-                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Капитальный ремонт">
-                <div class="gallery-overlay">
-                    <h4>Капитальный ремонт</h4>
-                    <p>Полная замена проводки и труб</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="sanitary" onclick="openModal(this)">
-                <img src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?w=800&q=80" alt="Санузел">
-                <div class="gallery-overlay">
-                    <h4>Санузел под ключ</h4>
-                    <p>Укладка плитки, установка сантехники</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="electric" onclick="openModal(this)">
-                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="Электрика">
-                <div class="gallery-overlay">
-                    <h4>Электромонтаж</h4>
-                    <p>Замена электропроводки</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="cosmetic" onclick="openModal(this)">
-                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Дизайн интерьера">
-                <div class="gallery-overlay">
-                    <h4>Дизайн интерьера</h4>
-                    <p>Современный ремонт спальни</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="capital" onclick="openModal(this)">
-                <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80" alt="Ремонт кухни">
-                <div class="gallery-overlay">
-                    <h4>Ремонт кухни</h4>
-                    <p>Полный комплекс работ</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<div id="myModal" class="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modalImg" src="" alt="Просмотр фото">
-    </div>
+<div class="gallery-item scroll-reveal" data-category="cosmetic" onclick="openModal(this)">
+    <img src="koridor-do.jpg" alt="">
 </div>
 
-<footer>
-    <div class="container">
-        <p style="font-size: 1.1em;">Ремонт квартир эконом класса в Самаре</p>
-        <p style="margin: 15px 0;">Честные цены, качественная работа, гарантия</p>
-        <p><a href="tel:+79996735260" class="phone">+7 (999) 673-52-60</a></p>
-        <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9em;">&copy; 2025 Частный мастер. Все права защищены.</p>
-    </div>
-</footer>
+<div class="gallery-item scroll-reveal" data-category="cosmetic" onclick="openModal(this)">
+    <img src="koridor-do (2).jpg" alt="">
+</div>
 
-<script>
-function filterGallery(category, btn) {
-    const items = document.querySelectorAll('.gallery-item');
-    const buttons = document.querySelectorAll('.filter-btn');
-    
-    buttons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    items.forEach(item => {
-        if (category === 'all' || item.getAttribute('data-category') === category) {
-            item.style.display = 'block';
-            setTimeout(() => item.style.opacity = '1', 10);
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
+<div class="gallery-item scroll-reveal" data-category="cosmetic" onclick="openModal(this)">
+    <img src="koridor-do (3).jpg" alt="">
+</div>
 
-function openModal(element) {
-    const modal = document.getElementById('myModal');
-    const modalImg = document.getElementById('modalImg');
-    const img = element.querySelector('img');
-    modal.style.display = 'flex';
-    modalImg.src = img.src;
-    document.body.style.overflow = 'hidden';
-}
+<div class="gallery-item scroll-reveal" data-category="cosmetic" onclick="openModal(this)">
+    <img src="koridor-dver.jpg" alt="">
+</div>
 
-function closeModal() {
-    document.getElementById('myModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
+<div class="gallery-item scroll-reveal" data-category="electric" onclick="openModal(this)">
+    <img src="koridor-dver (2).jpg" alt="">
+</div>
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') closeModal();
-});
-</script>
+<div class="gallery-item scroll-reveal" data-category="capital" onclick="openModal(this)">
+    <img src="kuhnya-plitka.jpg" alt="">
+</div>
 
-</body>
-</html>
+<div class="gallery-item scroll-reveal" data-category="capital" onclick="openModal(this)">
+    <img src="kuhnya-plitka (2).jpg" alt="">
+</div>
+
+<div class="gallery-item scroll-reveal" data-category="cosmetic" onclick="openModal(this)">
+    <img src="spalnya-palmy.jpg" alt="">
+</div>
+
+<div class="gallery-item scroll-reveal" data-category="capital" onclick="openModal(this)">
+    <img src="komnata-balkon.jpg" alt="">
+</div>
+
+<div class="gallery-item scroll-reveal" data-category="sanitary" onclick="openModal(this)">
+    <img src="vannaya-1.jpg" alt="">
+</div>
+
+<div class="gallery-item scroll-reveal" data-category="sanitary" onclick="openModal(this)">
+    <img src="vannaya-plitka.jpg" alt="">
+</div>
+
+<div class="gallery-item scroll-reveal" data-category="cosmetic" onclick="openModal(this)">
+    <img src="prihozhaya.jpg" alt="">
+</div>
+
+<div class="gallery-item scroll-reveal" data-category="cosmetic" onclick="openModal(this)">
+    <img src="remont-gostinaya.jpg" alt="">
+</div>
+
+</div>
+
+
