@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ремонт квартир эконом класса в Самаре. Частный мастер с 8-летним опытом. Доступные цены.">
-    <meta name="keywords" content="ремонт квартир Самара, эконом ремонт, частный мастер">
-    <title>Ремонт квартир в Самаре | Эконом класс | 8 лет опыта</title>
+    <meta name="description" content="Ремонт квартир эконом класса в Самаре от частного мастера. 8 лет опыта, 200+ объектов. Стоимость от 2500 руб/м². Косметический ремонт от 1200₽/м². Тел: 8-996-735-27-60">
+    <meta name="keywords" content="ремонт квартир Самара, частный мастер Самара, ремонт эконом класса Самара, ремонт квартир от 2500 руб, ремонт в Кировском районе">
+    <meta name="yandex-verification" content="300549ed754760c4" />
+    <meta name="google-site-verification" content="fa30d00be33ad935" />
+    <title>Ремонт квартир в Самаре от 2500₽/м² | Частный мастер | 8 лет опыта</title>
+    
+    <meta property="og:title" content="Ремонт квартир в Самаре от 2500₽/м² | Частный мастер">
+    <meta property="og:description" content="8 лет опыта. Эконом ремонт без посредников. Гарантия до 2 лет. Калькулятор стоимости онлайн.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://remontkvsamara.ru">
+    
+    <link rel="canonical" href="https://remontkvsamara.ru/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -89,6 +98,23 @@
             overflow: hidden;
         }
         
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -96,13 +122,27 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-content h1 {
             font-size: 2.8rem;
             font-weight: 800;
             line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .price-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
         }
         
         .hero-content p {
@@ -167,9 +207,7 @@
             border: 2px solid rgba(255,255,255,0.3);
         }
         
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.3);
-        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.3); }
         
         .hero-card {
             background: white;
@@ -303,6 +341,72 @@
         
         .service-card p { color: var(--gray); font-size: 0.95rem; }
         
+        .price-highlight {
+            background: linear-gradient(120deg, #fef3c7 0%, #fef3c7 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .portfolio {
+            background: var(--light);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            aspect-ratio: 4/3;
+            background: var(--dark);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        .portfolio-overlay h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
         .calculator-section {
             background: linear-gradient(to bottom, var(--light), white);
         }
@@ -332,6 +436,35 @@
             height: 650px;
             border: none;
             background: white;
+        }
+        
+        .seo-section {
+            background: white;
+            padding: 4rem 2rem;
+        }
+        
+        .seo-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .seo-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .seo-content h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .seo-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.8;
         }
         
         .advantages {
@@ -382,7 +515,7 @@
             font-size: 0.95rem;
         }
         
-        .contact { background: white; }
+        .contact { background: var(--light); }
         
         .contact-grid {
             display: grid;
@@ -407,12 +540,13 @@
             align-items: center;
             gap: 1rem;
             padding: 1.5rem;
-            background: var(--light);
+            background: white;
             border-radius: 16px;
             margin-bottom: 1rem;
             transition: all 0.3s;
             text-decoration: none;
             color: inherit;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
         .contact-method:hover {
@@ -487,6 +621,8 @@
             .contact-grid { grid-template-columns: 1fr; }
             
             .calc-frame { height: 500px; }
+            
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 640px) {
@@ -507,8 +643,8 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#services">Услуги</a></li>
+                <li><a href="#portfolio">Примеры работ</a></li>
                 <li><a href="#calculator">Калькулятор</a></li>
-                <li><a href="#advantages">Преимущества</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
             <div class="mobile-menu" onclick="toggleMenu()">
@@ -520,18 +656,19 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Ремонт квартир эконом-класса в Самаре</h1>
-                <p>Частный мастер с 8-летним опытом. Качественно, недорого, без посредников. Работаю один — отвечаю за результат лично.</p>
+                <h1>Ремонт квартир в Самаре от 2500₽/м²</h1>
+                <div class="price-tag">Эконом вариант от 1200₽/м²</div>
+                <p>Частный мастер с 8-летним опытом. 200+ сданных объектов в Самаре и области. Работаю без посредников и накруток — отвечаю за результат лично.</p>
                 
                 <div class="hero-badges">
                     <div class="badge"><i class="fas fa-check-circle"></i> 8 лет опыта</div>
-                    <div class="badge"><i class="fas fa-map-marker-alt"></i> Самара</div>
-                    <div class="badge"><i class="fas fa-ruble-sign"></i> Эконом цены</div>
+                    <div class="badge"><i class="fas fa-map-marker-alt"></i> Самара и обл.</div>
+                    <div class="badge"><i class="fas fa-shield-alt"></i> Гарантия 2 года</div>
                 </div>
                 
                 <div class="hero-buttons">
                     <a href="https://t.me/SamaraRemontEconomBot" class="btn btn-primary" target="_blank">
-                        <i class="fab fa-telegram"></i> Написать в Telegram
+                        <i class="fab fa-telegram"></i> Рассчитать в Telegram
                     </a>
                     <a href="tel:89967352760" class="btn btn-secondary">
                         <i class="fas fa-phone"></i> 8 (996) 735-27-60
@@ -544,7 +681,7 @@
                     <div class="master-avatar">Г</div>
                     <div class="master-details">
                         <h3>Геннадий</h3>
-                        <p>Частный мастер по ремонту</p>
+                        <p>Частный мастер-отделочник</p>
                     </div>
                 </div>
                 <div class="stats">
@@ -557,8 +694,8 @@
                         <div class="stat-label">Объектов</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Качество</div>
+                        <div class="stat-number">5★</div>
+                        <div class="stat-label">Рейтинг</div>
                     </div>
                 </div>
             </div>
@@ -568,64 +705,201 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-header">
-                <h2>Услуги</h2>
-                <p>От косметического ремонта до капитального — сделаю всё под ключ</p>
+                <h2>Профессиональные услуги ремонта</h2>
+                <p>Выполняю все виды работ от демонтажа до финишной отделки</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-paint-roller"></i></div>
                     <h3>Косметический ремонт</h3>
-                    <p>Поклейка обоев, покраска, укладка напольных покрытий. Быстро и чисто.</p>
+                    <p>От <span class="price-highlight">1200₽/м²</span>. Поклейка обоев, покраска, укладка ламината. Быстро и без пыли.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-hammer"></i></div>
                     <h3>Капитальный ремонт</h3>
-                    <p>Демонтаж, стяжка, штукатурка, замена проводки и труб.</p>
+                    <p>От <span class="price-highlight">4500₽/м²</span>. Демонтаж, стяжка, штукатурка, замена электрики и сантехники.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-bath"></i></div>
-                    <h3>Санузел под ключ</h3>
-                    <p>Плитка, сантехника, гидроизоляция. Гарантия на работы.</p>
+                    <h3>Ремонт санузлов</h3>
+                    <p>От <span class="price-highlight">35000₽</span>. Укладка плитки, гидроизоляция, установка сантехники.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-plug"></i></div>
-                    <h3>Электрика</h3>
-                    <p>Замена проводки, розетки, выключатели, автоматы.</p>
+                    <h3>Электромонтаж</h3>
+                    <p>От <span class="price-highlight">300₽/точка</span>. Замена проводки, установка розеток, сборка щитков.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-faucet"></i></div>
-                    <h3>Сантехника</h3>
-                    <p>Замена труб, смесителей, установка ванн и унитазов.</p>
+                    <h3>Сантехнические работы</h3>
+                    <p>Замена труб, установка смесителей, унитазов, ванн и душевых кабин.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-fill-drip"></i></div>
-                    <h3>Отделочные работы</h3>
-                    <p>Штукатурка, шпаклевка, выравнивание стен и потолков.</p>
+                    <h3>Выравнивание стен</h3>
+                    <p>Штукатурка, шпаклевка, гипсокартон. Идеально ровные стены под покраску.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Примеры выполненных работ</h2>
+                <p>Реальные фото с объектов в Кировском и других районах Самары</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Фото 1 -->
+                <div class="portfolio-item">
+                    <img src="DXUdzySKRkQweTZ0KX3MjWzIVSjCa14b_bcPrTQDey-ZBMIT_e6EGul6pcCLR_UXCmY1mOYIOT9DNBUzev29-Hxd%20%281%29.jpg" 
+                         alt="Ремонт квартиры в Самаре - косметический ремонт комнаты" 
+                         loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Косметический ремонт</h4>
+                        <p>Кировский район, подготовка под аренду</p>
+                    </div>
+                </div>
+                
+                <!-- Фото 2 -->
+                <div class="portfolio-item">
+                    <img src="G-xGy3g4tGT7bCkUd3qOyIEQqmRV61U85QRAtG37THOuCHDh1r3WVMU9JSRZaF1eDQzd3xnscRUQjsLOI5ysT7tb.jpg" 
+                         alt="Ремонт ванной комнаты в Самаре - укладка плитки" 
+                         loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Санузел под ключ</h4>
+                        <p>Плитка, сантехника, гидроизоляция</p>
+                    </div>
+                </div>
+                
+                <!-- Фото 3 -->
+                <div class="portfolio-item">
+                    <img src="GizTQmmo8CFDX8A45zzv_6Y6EwVj6XGdCZnNJJdrD0sSBlERjtEHTE2wZJLN6LTmjrXnArU2p4jnizAA1yJCyLZN.jpg" 
+                         alt="Капитальный ремонт квартиры в Самаре" 
+                         loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Капитальный ремонт</h4>
+                        <p>Стены, пол, потолок под ключ</p>
+                    </div>
+                </div>
+                
+                <!-- Фото 4 -->
+                <div class="portfolio-item">
+                    <img src="KC7AZxGv6MZajF9KHmW972hG0nh1lK_lJ2GSQPQeKPqzGYW1z22brPk666a8DJTLVIVcUAy5POpk1jGtR9KJSNQQ.jpg" 
+                         alt="Отделка комнаты покраской в Самаре" 
+                         loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Комната после ремонта</h4>
+                        <p>Покраска, ламинат, электрика</p>
+                    </div>
+                </div>
+
+                <!-- Фото 5 -->
+                <div class="portfolio-item">
+                    <img src="khztBDrlfQVxYnYIqA4x1jzVuUtE-CN2xcssM8w-mIBLegqwbh4IzXvvMWyqlnOS9nN4OktXoO78P6fhvE02OG-8.jpg" 
+                         alt="Ремонт кухни в Самаре" 
+                         loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Кухня</h4>
+                        <p>Фартук, пол, потолок</p>
+                    </div>
+                </div>
+
+                <!-- Фото 6 -->
+                <div class="portfolio-item">
+                    <img src="m2Rk2PD-hz5W_WUcriNsMrtvAAdE3Aeu3oahc805cfuPfr_V2qLClPPfQ1YxrH7kh5-UXRm9GfaldZ3gidc1hXD2.jpg" 
+                         alt="Дизайн ремонта квартиры Самара" 
+                         loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Современный дизайн</h4>
+                        <p>Новостройка, евроремонт</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; color: var(--gray);">
+                <i class="fas fa-camera"></i> 
+                Больше фото в моем <a href="https://t.me/SamaraRemontEconomBot" target="_blank" style="color: var(--primary); font-weight: 600;">Telegram</a>
+            </p>
         </div>
     </section>
 
     <section class="calculator-section" id="calculator">
         <div class="container">
             <div class="section-header">
-                <h2>Калькулятор ремонта</h2>
-                <p>Рассчитайте стоимость работ онлайн</p>
+                <h2>Калькулятор стоимости ремонта</h2>
+                <p>Рассчитайте точную цену за 2 минуты</p>
             </div>
             
             <div class="calc-container">
                 <div class="calc-header">
-                    <h3><i class="fas fa-calculator"></i> Расчет стоимости ремонта</h3>
-                    <p>Выберите параметры квартиры и получите предварительную цену</p>
+                    <h3><i class="fas fa-calculator"></i> Онлайн-расчет стоимости</h3>
+                    <p>Укажите параметры квартиры и получите детальную смету</p>
                 </div>
-                <!-- ВАЖНО: ссылка на калькулятор из другого репозитория -->
-                <iframe src="https://gennadiikostyk-wq.github.io/-samara-calc/" class="calc-frame" id="calcFrame"></iframe>
+                <iframe src="https://gennadiikostyk-wq.github.io/-samara-calc/" class="calc-frame" id="calcFrame" title="Калькулятор ремонта квартир в Самаре"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="seo-section" id="prices">
+        <div class="container">
+            <div class="seo-content">
+                <h2>Сколько стоит ремонт квартиры в Самаре в 2024 году?</h2>
+                <p>
+                    Стоимость ремонта квартиры в Самаре зависит от площади, состояния помещения и типа отделки. 
+                    Как частный мастер с 8-летним стажем, я предлагаю честные цены без накруток компаний-посредников.
+                </p>
+                
+                <h3>Косметический ремонт от 1200 рублей за м²</h3>
+                <p>
+                    Идеальный вариант, если квартира в хорошем состоянии и нужно освежить интерьер. Включает поклейку обоев, 
+                    покраску потолков, укладку ламината или линолеума, замену розеток и выключателей. Срок выполнения — от 5 дней 
+                    для однокомнатной квартиры.
+                </p>
+                
+                <h3>Капитальный ремонт от 4500 рублей за м²</h3>
+                <p>
+                    Полное преображение квартиры с демонтажем старых покрытий, выравниванием стен и полов, заменой электропроводки 
+                    и труб. Работаю во всех районах Самары: Кировский, Промышленный, Ленинский, Октябрьский и других.
+                </p>
+                
+                <h3>Почему выгодно работать с частным мастером?</h3>
+                <p>
+                    Бригады от строительных фирм включают в смету накладные расходы (офис, менеджеры, прибыль компании) — 
+                    это дополнительные 40-50% к стоимости. Работая со мной напрямую, вы платите только за материалы и честный труд. 
+                    Гарантия на все виды работ — до 2 лет.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="seo-section" style="background: var(--light);">
+        <div class="container">
+            <div class="seo-content">
+                <h2>Ремонт квартир в Кировском районе Самары</h2>
+                <p>
+                    Кировский район — один из самых крупных в Самаре, и я часто работаю здесь. Будь то панельная «хрущевка» 
+                    на улице Советской Армии или современная квартира на проспекте Ленина, знаю все особенности домов этого района.
+                </p>
+                
+                <h3>Особенности ремонта в сталинках и хрущевках</h3>
+                <p>
+                    В старых домах Кировского района часто встречаются деревянные полы, требующие выравнивания, 
+                    и старые алюминиевые электросети, которые необходимо менять на медные. Провожу бесплатный осмотр 
+                    и составляю точную смету с учетом всех нюансов вашего дома.
+                </p>
+                
+                <p>
+                    Выезд на замер бесплатный — позвоните по номеру <strong>8 (996) 735-27-60</strong> или напишите в 
+                    Telegram <strong>@SamaraRemontEconomBot</strong>. Работаю без выходных, удобное для вас время.
+                </p>
             </div>
         </div>
     </section>
@@ -633,33 +907,33 @@
     <section class="advantages" id="advantages">
         <div class="container">
             <div class="section-header">
-                <h2 style="color: white;">Почему я</h2>
-                <p style="color: rgba(255,255,255,0.7);">Без посредников и накруток</p>
+                <h2 style="color: white;">Преимущества работы со мной</h2>
+                <p style="color: rgba(255,255,255,0.7);">Честные цены и качественная работа</p>
             </div>
             
             <div class="advantages-grid">
                 <div class="advantage-item">
                     <div class="advantage-icon"><i class="fas fa-user-tie"></i></div>
                     <h3>Один мастер</h3>
-                    <p>Работаю без бригад. Вы общаетесь напрямую с исполнителем.</p>
+                    <p>Работаю без бригад случайных людей. Вы общаетесь напрямую с исполнителем, который лично отвечает за результат.</p>
                 </div>
                 
                 <div class="advantage-item">
                     <div class="advantage-icon"><i class="fas fa-hand-holding-usd"></i></div>
                     <h3>Экономия до 40%</h3>
-                    <p>Никаких накруток фирм. Платите только за работу.</p>
+                    <p>Никаких накруток строительных фирм и посредников. Только материалы и честная цена за работу.</p>
                 </div>
                 
                 <div class="advantage-item">
                     <div class="advantage-icon"><i class="fas fa-clock"></i></div>
-                    <h3>В срок</h3>
-                    <p>Соблюдаю сроки по договору. Не затягиваю.</p>
+                    <h3>Точно в срок</h3>
+                    <p>Соблюдаю сроки, прописанные в договоре. Не затягиваю работы на месяцы, уважаю ваше время.</p>
                 </div>
                 
                 <div class="advantage-item">
                     <div class="advantage-icon"><i class="fas fa-file-contract"></i></div>
-                    <h3>Гарантия</h3>
-                    <p>Официальный договор с гарантией до 2 лет.</p>
+                    <h3>Договор и гарантия</h3>
+                    <p>Оформляю официальный договор с гарантией на работы до 2 лет. Все прозрачно и по-честному.</p>
                 </div>
             </div>
         </div>
@@ -669,13 +943,13 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Готовы начать?</h3>
-                    <p>Свяжитесь любым способом. Отвечу в течение 15 минут.</p>
+                    <h3>Заказать ремонт в Самаре</h3>
+                    <p>Бесплатный выезд на замер и составление сметы. Работаю без выходных с 8:00 до 20:00.</p>
                     
                     <a href="tel:89967352760" class="contact-method">
                         <div class="contact-icon"><i class="fas fa-phone"></i></div>
                         <div class="contact-details">
-                            <h4>Позвонить</h4>
+                            <h4>Позвонить прямо сейчас</h4>
                             <p>8 (996) 735-27-60</p>
                         </div>
                     </a>
@@ -684,7 +958,7 @@
                         <div class="contact-icon" style="background: #0088cc;"><i class="fab fa-telegram"></i></div>
                         <div class="contact-details">
                             <h4>Telegram Bot</h4>
-                            <p>@SamaraRemontEconomBot</p>
+                            <p>@SamaraRemontEconomBot — расчет стоимости 24/7</p>
                         </div>
                     </a>
                     
@@ -692,19 +966,24 @@
                         <div class="contact-icon" style="background: #2aabee;"><i class="fab fa-telegram-plane"></i></div>
                         <div class="contact-details">
                             <h4>Личный Telegram</h4>
-                            <p>Написать напрямую</p>
+                            <p>Прямой контакт с мастером</p>
                         </div>
                     </a>
                 </div>
                 
-                <div style="background: var(--light); padding: 2rem; border-radius: 24px; text-align: center;">
-                    <h3 style="margin-bottom: 1rem;">Быстрая заявка</h3>
-                    <p style="color: var(--gray); margin-bottom: 2rem;">Нажмите кнопку ниже, чтобы открыть чат с ботом</p>
-                    <a href="https://t.me/SamaraRemontEconomBot" class="btn btn-primary" target="_blank" style="display: inline-block;">
-                        <i class="fab fa-telegram"></i> Открыть Telegram Bot
+                <div style="background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center;">
+                    <h3 style="margin-bottom: 1rem; color: var(--dark);">Получите смету за 15 минут</h3>
+                    <p style="color: var(--gray); margin-bottom: 2rem; line-height: 1.6;">
+                        Отправьте фото квартиры или планировку в Telegram — рассчитаю точную стоимость работ и материалов
+                    </p>
+                    <a href="https://t.me/SamaraRemontEconomBot" class="btn btn-primary" target="_blank" style="display: inline-block; margin-bottom: 1rem;">
+                        <i class="fab fa-telegram"></i> Написать в Telegram
                     </a>
-                    <p style="color: var(--gray); font-size: 0.9rem; margin-top: 1rem;">
+                    <p style="color: var(--gray); font-size: 0.9rem;">
                         Или позвоните: <strong style="color: var(--dark);">8 (996) 735-27-60</strong>
+                    </p>
+                    <p style="color: var(--accent); font-size: 0.85rem; margin-top: 1rem;">
+                        <i class="fas fa-check-circle"></i> Первичный выезд и смета бесплатно
                     </p>
                 </div>
             </div>
@@ -714,13 +993,100 @@
     <footer>
         <div class="footer-logo"><i class="fas fa-home"></i> remontkvsamara.ru</div>
         <p class="footer-text">
-            Ремонт квартир эконом-класса в Самаре.<br>
-            Частный мастер с 8-летним опытом.
+            Ремонт квартир эконом-класса в Самаре от частного мастера.<br>
+            8 лет опыта. Работаю без посредников и накруток.
         </p>
         <div class="copyright">
-            © 2024 remontkvsamara.ru | Все права защищены
+            © 2024 remontkvsamara.ru | Все права защищены<br>
+            <small>Частный мастер по ремонту квартир в Самарской области</small>
         </div>
     </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Ремонт квартир Самара - частный мастер",
+      "image": "https://remontkvsamara.ru/android-chrome-512x512%5B1%5D.png",
+      "@id": "https://remontkvsamara.ru",
+      "url": "https://remontkvsamara.ru",
+      "telephone": "+7-996-735-27-60",
+      "priceRange": "₽₽",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Самара",
+        "addressRegion": "Самарская область",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 53.195878,
+        "longitude": 50.100202
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "20:00"
+        }
+      ],
+      "serviceType": ["Ремонт квартир", "Косметический ремонт", "Капитальный ремонт", "Ремонт санузлов", "Электромонтаж", "Сантехнические работы"],
+      "areaServed": {
+        "@type": "City",
+        "name": "Самара"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      },
+      "description": "Частный мастер по ремонту квартир эконом класса в Самаре. 8 лет опыта, 200+ объектов. Цены от 1200₽/м². Гарантия до 2 лет."
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Ремонт квартир",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Ремонт квартир Самара"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Самара",
+        "addressCountry": "RU"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Виды ремонта",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Косметический ремонт квартиры"
+            },
+            "price": "1200",
+            "priceCurrency": "RUB",
+            "unitCode": "MTK"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Капитальный ремонт квартиры"
+            },
+            "price": "4500",
+            "priceCurrency": "RUB",
+            "unitCode": "MTK"
+          }
+        ]
+      }
+    }
+    </script>
 
     <script>
         function toggleMenu() {
@@ -752,5 +1118,6 @@
     </script>
 </body>
 </html>
+
 
 
